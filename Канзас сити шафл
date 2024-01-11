@@ -1,0 +1,46 @@
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        int arrayLenght = 10;
+        int[] arrayNumbers = new int[arrayLenght];
+
+
+        Console.WriteLine("Массив чисел: ");
+        FillArray(arrayNumbers);
+
+        Console.WriteLine("\nПеремешанный массив: ");
+        Shuffle(arrayNumbers);
+
+        Console.ReadKey();
+    }
+
+    private static void FillArray(int[] arrayNumbers)
+    {
+        Random random = new Random();
+
+        int minNumber = 0;
+        int maxNumber = 10;
+
+        for (int i = 0; i < arrayNumbers.Length; i++)
+        {
+            arrayNumbers[i] = random.Next(minNumber, maxNumber);
+            Console.Write(arrayNumbers[i] + " ");
+        }
+    }
+
+    private static void Shuffle(int[] arrayNumbersShuffle)
+    {
+        Random random = new Random();
+
+        for (int i = arrayNumbersShuffle.Length - 1; i >= 1 ; i--)
+        {
+            int randomIndex = random.Next(i + 1);
+            var shuffledElement = arrayNumbersShuffle[randomIndex];
+            arrayNumbersShuffle[randomIndex] = arrayNumbersShuffle[i];
+            arrayNumbersShuffle[i] = shuffledElement;
+
+            Console.Write(shuffledElement + " ");
+        }
+    }
+}
